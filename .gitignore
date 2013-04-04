@@ -3,3 +3,5 @@
 /log/*.log
 /tmp
 .rvmrc
+/config/environments/development.rb
+/config/environments/production.rb
