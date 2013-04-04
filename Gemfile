@@ -21,6 +21,11 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'devise'
+gem 'devise-russian'
+gem 'will_paginate'
+gem "less-rails"
+gem 'twitter-bootstrap-rails', '2.1.6'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
