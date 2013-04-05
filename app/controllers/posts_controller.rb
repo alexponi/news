@@ -3,7 +3,9 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    if user_signed_in?
+      @posts = current_user.posts.paginate page: params[:page], order: 'created_at asc', per_page: 2
+    end
 
     respond_to do |format|
       format.html # index.html.erb
