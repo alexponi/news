@@ -1,9 +1,11 @@
 News::Application.routes.draw do
-  devise_for :users
-
+  devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}
   resources :posts
 
-  root :to => "posts#index"
+  root :to => "main#index"
+  get "main/index"
+  get "main/show"
+  match 'main/:id' => 'main#show' 
 
 
   # The priority is based upon order of creation:
