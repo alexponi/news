@@ -5,7 +5,9 @@
   <div class="span10">
 
 
-     
+  <div>
+    <p><%= will_paginate @posts %></p>
+  </div>   
   <div class="accordion" id="accordion1">
     <% @posts.each do |post| %>
     <div class="accordion-group">
@@ -29,6 +31,9 @@
       </div>
     </div>
     <% end %>
+  </div>
+  <div>
+    <p><%= will_paginate @posts %></p>
   </div>
 
  

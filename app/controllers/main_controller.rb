@@ -1,6 +1,6 @@
 class MainController < ApplicationController
   def index
-  	@posts = Post.all
+    @posts = Post.paginate page: params[:page], order: 'created_at asc', per_page: 10
 
     respond_to do |format|
       format.html # index.html.erb
