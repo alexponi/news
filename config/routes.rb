@@ -1,4 +1,7 @@
 News::Application.routes.draw do
+  resources :votes
+
+
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}
   resources :posts
 
