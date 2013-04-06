@@ -1,4 +1,5 @@
 class VotesController < ApplicationController
+  before_filter :authenticate_user!
   # GET /votes
   # GET /votes.json
   def index
@@ -24,8 +25,7 @@ class VotesController < ApplicationController
   # GET /votes/new
   # GET /votes/new.json
   def new
-    @vote = Vote.new
-
+    @vote = Vote.new post_id:(params[:post_id]), user_id:(params[:user_id])
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @vote }

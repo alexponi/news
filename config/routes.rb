@@ -1,14 +1,16 @@
 News::Application.routes.draw do
-  resources :votes
+  
 
 
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}
   resources :posts
+  resources :votes
 
   root :to => "main#index"
   get "main/index"
   get "main/show"
-  match 'main/:id' => 'main#show' 
+  match 'main/:id' => 'main#show'
+  match 'vote/new(/:id)' => 'vote#new'
 
 
   # The priority is based upon order of creation:

@@ -8,7 +8,6 @@
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:post_id) %></th>
       <th><%= model_class.human_attribute_name(:user_id) %></th>
-      <th><%= model_class.human_attribute_name(:rate) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -19,7 +18,6 @@
         <td><%= link_to vote.id, vote_path(vote) %></td>
         <td><%= vote.post_id %></td>
         <td><%= vote.user_id %></td>
-        <td><%= vote.rate %></td>
         <td><%=l vote.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),

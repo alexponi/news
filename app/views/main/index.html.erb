@@ -21,7 +21,9 @@
           <%= post.message %>
           <div align="right">
             <p><%= User.find(post.user_id).email %></p>
-            <p><button class="btn btn-info" type="button">Vote</button></p>
+            <% if current_user != nil %>
+            <p><%= button_to 'Vote', new_vote_path(user_id: current_user, post_id: post), :class => 'btn btn-info'  %></p>
+            <% end %>
           </div>
         </div>
       </div>
