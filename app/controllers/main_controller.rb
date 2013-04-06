@@ -1,7 +1,6 @@
 class MainController < ApplicationController
   def index
     @posts = Post.paginate page: params[:page], order: 'created_at asc', per_page: 8
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @posts }

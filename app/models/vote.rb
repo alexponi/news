@@ -9,7 +9,6 @@ class Vote < ActiveRecord::Base
 
   def vote_calculation
     post = Post.find(self.post_id)
-    vote_new = post.vote + 1
-    post.update_attribute(:vote, vote_new)
-  end	
+    post.update_attribute(:vote, post.votes.count)
+  end 
 end
