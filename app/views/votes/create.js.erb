@@ -1,2 +1,2 @@
-$('#voteboot').html('<%=j render ('main/rating') %>');
+$("#rate<%= @vote.post_id %>").html("Рейтинг: <%= @vote.post.vote %>")
 

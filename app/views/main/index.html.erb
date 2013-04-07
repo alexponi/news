@@ -13,10 +13,10 @@
         </a>
       </div>
       <div id="collapse<%= post.id %>" class="accordion-body collapse">
-        <div id="voteboot" class="accordion-inner">
+        <div class="accordion-inner">
           <div align="left">
             <p><%= post.created_at %></p>
-            <p>Рейтинг: <% post.vote %></p>
+            <p id='rate<%= post.id %>'>Рейтинг: <%= post.vote %></p>
           </div>
           <%= post.message %>
           <div align="right">
