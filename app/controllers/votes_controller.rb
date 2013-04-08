@@ -1,5 +1,5 @@
 class VotesController < ApplicationController
-  before_filter :authenticate_user!
+  #before_filter :authenticate_user!
   # GET /votes
   # GET /votes.json
   def index
@@ -41,7 +41,12 @@ class VotesController < ApplicationController
   # POST /votes.json
   def create
     @vote = Vote.new post_id:(params[:post_id]), user_id:(params[:user_id])
-    @vote.save
+    if @vote.save
+      if cookies[:email] == nil
+        cookies[:email] = { :value => @vote.user.email, :expires => 5.year.from_now }
+      end  
+    end
+
 
     respond_to do |format|
       if @vote.save

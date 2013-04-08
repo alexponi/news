@@ -1,9 +1,22 @@
 
 
   <h4>All posts</h4>
-  <div>
-    <p><%= will_paginate @posts %></p>
-  </div>   
+
+  <div class="row">
+        <div class="span5">
+          <p><%= will_paginate @posts %></p>
+        </div>
+        <div class="span5">
+          <br><p>
+            <a href="main/index?rating=1">Sort by rating and date</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;
+            <a href="<%= root_path %>?rating=2">Sort by date desc</a>
+            &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;
+            <a href="<%= root_path %>">Sort by date asc</a>
+          </p>
+        </div>
+      </div>
+
+  
   <div class="accordion" id="accordion1">
     <% @posts.each do |post| %>
     <div class="accordion-group">
@@ -21,7 +34,7 @@
           <%= post.message %>
           <div align="right">
             <p><%= User.find(post.user_id).email %></p>
-            <% if current_user != nil %>
+            <% if current_user != nil || cookies[:email] != nil %>
             <p><%= button_to 'Vote', votes_path(user_id: current_user, post_id: post), :class => 'btn btn-info', remote: true  %></p>
             <% end %>
           </div>
