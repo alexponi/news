@@ -9,8 +9,9 @@ class MainController < ApplicationController
         @posts = Post.page(params[:page]).order('id ASC').per_page(8)
       end
     else
-      @posts = Post.page(params[:page]).order('id ASC').per_page(8)
+      @posts = Post.page(params[:page]).order('id ASC').per_page(8)  
     end
+    @user_cook = User.where(email: cookies[:email])
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @posts }

@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
          :confirmable, :lockable, :timeoutable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :confirmed_at
+  attr_accessible :id, :email, :password, :password_confirmation, :remember_me, :confirmed_at
   # attr_accessible :title, :body
 
   has_many :posts, dependent: :destroy

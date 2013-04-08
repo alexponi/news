@@ -29,14 +29,33 @@
         <div class="accordion-inner">
           <div align="left">
             <p><%= post.created_at %></p>
-            <p id='rate<%= post.id %>'>Рейтинг: <%= post.vote %></p>
+            <p id='rate<%= post.id %>'>Рейтинг: <%= post.vote %>
+            <% if current_user != nil %>
+              <% if Vote.where(user_id: current_user.id, post_id: post.id).first == nil %>
+                
+                <%= hidden_div_if(post.vote > 0, id: 'knop + #{post.id}') do %>
+                  <%= button_to 'Vote', votes_path(user_id: current_user, post_id: post), :class => 'btn btn-info', remote: true  %>
+                <% end %>
+
+              <% end %>
+            <% elsif cookies[:email] != nil%>
+              <% if Vote.where(user_id: @user_cook, post_id: post.id).first == nil %>
+                
+
+                <%= hidden_div_if(post.vote > 0, id: 'knop + #{post.id}') do %>
+                  <%= button_to 'Vote', votes_path(user_id: current_user, post_id: post), :class => 'btn btn-info', :onklick => 'hide', remote: true  %>
+                <% end %>
+
+              <% end %>  
+            <% else %>      
+            <% end %>
+            </p>
           </div>
           <%= post.message %>
           <div align="right">
             <p><%= User.find(post.user_id).email %></p>
-            <% if current_user != nil || cookies[:email] != nil %>
-            <p><%= button_to 'Vote', votes_path(user_id: current_user, post_id: post), :class => 'btn btn-info', remote: true  %></p>
-            <% end %>
+            
+            
           </div>
         </div>
       </div>
