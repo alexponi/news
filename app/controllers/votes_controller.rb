@@ -42,8 +42,8 @@ class VotesController < ApplicationController
   def create
     @vote = Vote.new post_id:(params[:post_id]), user_id:(params[:user_id])
     if @vote.save
-      if cookies[:email] == nil
-        cookies[:email] = { :value => @vote.user.email, :expires => 5.year.from_now }
+      if cookies[:id] == nil
+        cookies[:id] = { :value => @vote.user.id, :expires => 5.year.from_now }
       end  
     end
 
