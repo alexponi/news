@@ -26,9 +26,9 @@
             <p><%= post.created_at %></p>
             <p id='rate<%= post.id %>'>Рейтинг: <%= post.vote %></p>
             <% if current_user != nil && Vote.where(user_id: current_user.id, post_id: post.id).first == nil %>
-              <p id='knop<%= post.id %>'><%= button_to 'Vote', votes_path(user_id: current_user, post_id: post), :class => 'btn btn-info', remote: true %></p>
+              <div id='knop<%= post.id %>a1'><%= button_to 'Vote', votes_path(user_id: current_user, post_id: post), :class => 'btn btn-info', :id => 'vote_button', remote: true  %></div>
             <% elsif cookies[:id] != nil && Vote.where(user_id: cookies[:id], post_id: post.id).first == nil %>
-              <p id='knop<%= post.id %>'><%= button_to 'Vote', votes_path(user_id: cookies[:id], post_id: post), :class => 'btn btn-info', remote: true %></p>   
+              <div id='knop<%= post.id %>a2'><%= button_to 'Vote', votes_path(user_id: cookies[:id], post_id: post),{ :class => 'btn btn-info', :id => 'vote_button',remote: true }%></div>   
             <% end %>            
           </div>
           <%= post.message %>
